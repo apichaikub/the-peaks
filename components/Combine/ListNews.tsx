@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { NewsItem } from "../../constants/news"
 import Container from "../Base/Container"
 import CardNews from "../Combine/CardNews"
 import { TStyles } from '../Combine/CardNews'
@@ -29,77 +30,44 @@ const Item = styled.div`
   margin-bottom: 30px;
 `
 
-const ListNews = () => {
-  const style : TStyles = {
-    body: {
-      height: 345,
+const style : TStyles = {
+  body: {
+    height: 345,
+  },
+  footer: {
+    height: 130,
+    backgroundColor: 'rgba(9, 53, 123, 0.9)',
+    borderColor: '#388E3C',
+    title: {
+      fontSize: 20,
+      limitLines: 2,
+      lineHeight: 29,
     },
-    footer: {
-      height: 130,
-      backgroundColor: 'rgba(9, 53, 123, 0.9)',
-      borderColor: '#388E3C',
-      title: {
-        fontSize: 20,
-        limitLines: 2,
-        lineHeight: 29,
-      },
-      summary: {
-        fontSize: 14,
-        limitLines: 2,
-        lineHeight: 20,
-      },
+    summary: {
+      fontSize: 14,
+      limitLines: 2,
+      lineHeight: 20,
     },
-  }
+  },
+}
+
+type Props = {
+  items: NewsItem[];
+}
+
+const ListNews = ({ items = [] } : Props) => {
   return (
     <Wrapper>
-      <Item>
-        <CardNews
-          cover="https://s3-alpha-sig.figma.com/img/4b3c/e346/7205343d627a66b35c43d45ef30426fe?Expires=1625443200&Signature=YjGwTViyXzcJwuhTus8TDCkQfBLaOcHPI9nk4SFGIbA-IqyFiqzQV9GoUXPXi2jdAInHo7LkHgDAdatVRBTpXLcC6BYyexIOUUIAzkjpU7CLIuoygaO~vS9e0bSzHqRKnr3RIFfTKeuZto17FdSCssk7dsRg3NKMBwduHksOG19qrnUTUr9TyvYcAA5SwyFEvN7IVFAehOdXNateH77xPTzMMp~rsafJQXJihbpl-BKuqZlB9~FJhyqBXtsJII5Fty9Vjj~pNF6TXLKDfeSwWeUkRNzEKkftUur178-PJTXC5-Av3nkNDSDYDOjZjtfP3Q6BjKaVpCj5YlhwN~37fg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-          title="Coronavirus live news: markets fall over fears of long US"
-          summary="Republican senators on Capitol Hill have expressed their dismay at a Donald Trump."
-          styles={style}
-        />
-      </Item>
-      <Item>
-        <CardNews
-          cover="https://s3-alpha-sig.figma.com/img/4b3c/e346/7205343d627a66b35c43d45ef30426fe?Expires=1625443200&Signature=YjGwTViyXzcJwuhTus8TDCkQfBLaOcHPI9nk4SFGIbA-IqyFiqzQV9GoUXPXi2jdAInHo7LkHgDAdatVRBTpXLcC6BYyexIOUUIAzkjpU7CLIuoygaO~vS9e0bSzHqRKnr3RIFfTKeuZto17FdSCssk7dsRg3NKMBwduHksOG19qrnUTUr9TyvYcAA5SwyFEvN7IVFAehOdXNateH77xPTzMMp~rsafJQXJihbpl-BKuqZlB9~FJhyqBXtsJII5Fty9Vjj~pNF6TXLKDfeSwWeUkRNzEKkftUur178-PJTXC5-Av3nkNDSDYDOjZjtfP3Q6BjKaVpCj5YlhwN~37fg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-          title="Coronavirus live news: markets fall over fears of long US"
-          summary="Republican senators on Capitol Hill have expressed their dismay at a Donald Trump."
-          styles={style}
-        />
-      </Item>
-      <Item>
-        <CardNews
-          cover="https://s3-alpha-sig.figma.com/img/4b3c/e346/7205343d627a66b35c43d45ef30426fe?Expires=1625443200&Signature=YjGwTViyXzcJwuhTus8TDCkQfBLaOcHPI9nk4SFGIbA-IqyFiqzQV9GoUXPXi2jdAInHo7LkHgDAdatVRBTpXLcC6BYyexIOUUIAzkjpU7CLIuoygaO~vS9e0bSzHqRKnr3RIFfTKeuZto17FdSCssk7dsRg3NKMBwduHksOG19qrnUTUr9TyvYcAA5SwyFEvN7IVFAehOdXNateH77xPTzMMp~rsafJQXJihbpl-BKuqZlB9~FJhyqBXtsJII5Fty9Vjj~pNF6TXLKDfeSwWeUkRNzEKkftUur178-PJTXC5-Av3nkNDSDYDOjZjtfP3Q6BjKaVpCj5YlhwN~37fg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-          title="Coronavirus live news: markets fall over fears of long US"
-          summary="Republican senators on Capitol Hill have expressed their dismay at a Donald Trump."
-          styles={style}
-        />
-      </Item>
-      <Item>
-        <CardNews
-          cover="https://s3-alpha-sig.figma.com/img/4b3c/e346/7205343d627a66b35c43d45ef30426fe?Expires=1625443200&Signature=YjGwTViyXzcJwuhTus8TDCkQfBLaOcHPI9nk4SFGIbA-IqyFiqzQV9GoUXPXi2jdAInHo7LkHgDAdatVRBTpXLcC6BYyexIOUUIAzkjpU7CLIuoygaO~vS9e0bSzHqRKnr3RIFfTKeuZto17FdSCssk7dsRg3NKMBwduHksOG19qrnUTUr9TyvYcAA5SwyFEvN7IVFAehOdXNateH77xPTzMMp~rsafJQXJihbpl-BKuqZlB9~FJhyqBXtsJII5Fty9Vjj~pNF6TXLKDfeSwWeUkRNzEKkftUur178-PJTXC5-Av3nkNDSDYDOjZjtfP3Q6BjKaVpCj5YlhwN~37fg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-          title="Coronavirus live news: markets fall over fears of long US"
-          summary="Republican senators on Capitol Hill have expressed their dismay at a Donald Trump."
-          styles={style}
-        />
-      </Item>
-      <Item>
-        <CardNews
-          cover="https://s3-alpha-sig.figma.com/img/4b3c/e346/7205343d627a66b35c43d45ef30426fe?Expires=1625443200&Signature=YjGwTViyXzcJwuhTus8TDCkQfBLaOcHPI9nk4SFGIbA-IqyFiqzQV9GoUXPXi2jdAInHo7LkHgDAdatVRBTpXLcC6BYyexIOUUIAzkjpU7CLIuoygaO~vS9e0bSzHqRKnr3RIFfTKeuZto17FdSCssk7dsRg3NKMBwduHksOG19qrnUTUr9TyvYcAA5SwyFEvN7IVFAehOdXNateH77xPTzMMp~rsafJQXJihbpl-BKuqZlB9~FJhyqBXtsJII5Fty9Vjj~pNF6TXLKDfeSwWeUkRNzEKkftUur178-PJTXC5-Av3nkNDSDYDOjZjtfP3Q6BjKaVpCj5YlhwN~37fg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-          title="Coronavirus live news: markets fall over fears of long US"
-          summary="Republican senators on Capitol Hill have expressed their dismay at a Donald Trump."
-          styles={style}
-        />
-      </Item>
-      <Item>
-        <CardNews
-          cover="https://s3-alpha-sig.figma.com/img/4b3c/e346/7205343d627a66b35c43d45ef30426fe?Expires=1625443200&Signature=YjGwTViyXzcJwuhTus8TDCkQfBLaOcHPI9nk4SFGIbA-IqyFiqzQV9GoUXPXi2jdAInHo7LkHgDAdatVRBTpXLcC6BYyexIOUUIAzkjpU7CLIuoygaO~vS9e0bSzHqRKnr3RIFfTKeuZto17FdSCssk7dsRg3NKMBwduHksOG19qrnUTUr9TyvYcAA5SwyFEvN7IVFAehOdXNateH77xPTzMMp~rsafJQXJihbpl-BKuqZlB9~FJhyqBXtsJII5Fty9Vjj~pNF6TXLKDfeSwWeUkRNzEKkftUur178-PJTXC5-Av3nkNDSDYDOjZjtfP3Q6BjKaVpCj5YlhwN~37fg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-          title="Coronavirus live news: markets fall over fears of long US"
-          summary="Republican senators on Capitol Hill have expressed their dismay at a Donald Trump."
-          styles={style}
-        />
-      </Item>
+      { items.map((item, index) => (
+        <Item key={index}>
+          <CardNews
+            cover={item.cover}
+            title={item.title}
+            summary={item.summary}
+            styles={style}
+          />
+        </Item>
+      )) }
     </Wrapper>
   )
 }

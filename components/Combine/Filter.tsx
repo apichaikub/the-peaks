@@ -16,7 +16,6 @@ type Props = {
 }
 
 const Top5Actions = ({ showButtonBookmark = true, showDropdownNews = true } : Props) => {
-
   return (
     <Actions>
       { showButtonBookmark &&

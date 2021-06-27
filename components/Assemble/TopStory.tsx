@@ -4,12 +4,16 @@ import ListNews from "../Combine/ListNews"
 import Sidebar from "../Combine/Sidebar"
 import Filter from "../Combine/Filter"
 import Top5News from "../Combine/Top5News"
+import { NewsItem } from "../../constants/news"
 
 type Props = {
   title: String;
+  topStories: NewsItem[];
 }
 
-const TopStory = ({ title } : Props) => {
+const TopStory = ({ title, topStories } : Props) => {
+  const top5Items = topStories.filter((_: any, index: Number) => index <= 4)
+  const restItems = topStories.filter((_: any, index: Number) => index >= 5)
   return (
     <>
       <Sidebar>
@@ -17,8 +21,14 @@ const TopStory = ({ title } : Props) => {
         <Filter/>
       </Sidebar>
       <Container>
-        <Top5News/>
-        <ListNews/>
+        { top5Items.length &&
+        <Top5News
+          items={top5Items}
+        /> }
+        { restItems.length &&
+        <ListNews
+          items={restItems}
+        /> }
       </Container>
     </>
   )
