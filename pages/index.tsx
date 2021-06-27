@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import TopStory from '../components/Assemble/TopStory'
 import News from '../components/Assemble/News'
+import Layout from '../components/Assemble/Layout'
 import { getSearch } from '../services/guardian/news.api'
 import { NewsItem } from '../constants/news'
-import Layout from '../components/Assemble/Layout'
 
-const transformItems = (items : any[]) => {
+const transformItems = (items : any[]) : NewsItem[] => {
   return items.map((item: any) => {
     return {
+      id: item.id,
       cover: item.fields.thumbnail,
       title: item.fields.headline,
       summary: item.fields.trailText,

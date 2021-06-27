@@ -61,6 +61,7 @@ const ListNews = ({ items = [] } : Props) => {
       { items.map((item, index) => (
         <Item key={index}>
           <CardNews
+            id={item.id}
             cover={item.cover}
             title={item.title}
             summary={item.summary}

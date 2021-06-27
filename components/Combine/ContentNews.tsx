@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Detail from "../Base/Detail";
 import H1 from "../Base/H1";
@@ -65,6 +66,11 @@ export interface IContentNewsProps extends Media {
 }
 
 const ContentNews = ({ isSaved, createdAt, topic, summary, detail, image } : IContentNewsProps) => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+      setMounted(true)
+  }, [])
+
   const buttonText = isSaved
     ? 'REMOVE BOOKMARK'
     : 'ADD BOOKMARK'
@@ -82,12 +88,14 @@ const ContentNews = ({ isSaved, createdAt, topic, summary, detail, image } : ICo
           { createdAt }
         </HelperText>
         <Topic>{ topic }</Topic>
-        <SummaryCustom>{ summary }</SummaryCustom>
+        { mounted &&
+        <SummaryCustom dangerouslySetInnerHTML={{ __html: summary ? summary.toString() : '' }} /> }
         <Line />
       </Box>
+      { mounted &&
       <Box>
-        <Detail>{ detail }</Detail>
-      </Box>
+        <Detail dangerouslySetInnerHTML={{ __html: detail ? detail.toString() : '' }}/>
+      </Box> }
       <Box>
         <Media
           src={image.src}

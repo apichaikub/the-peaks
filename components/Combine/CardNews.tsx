@@ -51,6 +51,7 @@ type TCardFooterCustomProps = {
 }
 
 type TCardNewsProps = {
+  id: String;
   cover?: String;
   title: String;
   summary?: String;
@@ -106,7 +107,7 @@ const SummaryCustom = styled(Summary)<ISummaryCustomProps>`
   ${CSSText}
 `
 
-const CardNews = ({ cover, title, summary, styles }: TCardNewsProps) => {
+const CardNews = ({ id, cover, title, summary, styles }: TCardNewsProps) => {
   const cardProps = {
     height: styles.body.height,
   }
@@ -126,23 +127,24 @@ const CardNews = ({ cover, title, summary, styles }: TCardNewsProps) => {
     limitLines: styles.footer.summary.limitLines,
     lineHeight: styles.footer.summary.lineHeight,
   }
+  const link = `/content/${id}`
   return (
     <CardCustom { ...cardProps }>
       { cover &&
       <CardBodyCustom>
-        <Link href="/content">
+        <Link href={link}>
           <Image src={cover.toString()} alt="Image" layout="fill" objectFit="cover" />
         </Link>
       </CardBodyCustom> }
       <CardFooterCustom { ...footerProps }>
-        <Link href="/content">
+        <Link href={link}>
           <Topic { ...topicProps }>
             { title }
           </Topic>
         </Link>
         { summary &&
         <SummaryCustom { ...summaryProps }>
-          <Link href="/content">
+          <Link href={link}>
             { summary }
           </Link>
         </SummaryCustom> }

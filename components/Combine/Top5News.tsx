@@ -181,6 +181,7 @@ const Top5News = ({ items = [] } : Props) => {
           if(index === 0) {
             return (
               <CardNews
+                id={item.id}
                 cover={item.cover}
                 title={item.title}
                 summary={item.summary}
@@ -190,6 +191,7 @@ const Top5News = ({ items = [] } : Props) => {
           } else if(index >= 1 && index <= 2) {
             return (
               <CardNews
+                id={item.id}
                 cover={item.cover}
                 title={item.title}
                 styles={style2}
@@ -198,6 +200,7 @@ const Top5News = ({ items = [] } : Props) => {
           } else {
             return (
               <CardNews
+                id={item.id}
                 title={item.title}
                 styles={style3}
               />
