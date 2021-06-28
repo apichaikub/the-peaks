@@ -1,27 +1,11 @@
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import Layout from '../../components/Assemble/Layout'
 import Content from '../../components/Assemble/Content'
+import useSearch from '../../hook/useSearch'
 import { NewsContent } from '../../constants/news'
 import { getDetail } from '../../services/guardian/news.api'
-import useSearch from '../../hook/useSearch'
-
-const transformContent = (result: any) : NewsContent => {
-  return {
-    title: result?.fields?.headline,
-    summary: result?.fields?.trailText,
-    createdAt: result?.webPublicationDate,
-    detail: result?.fields?.body,
-    image: {
-      src: result?.fields?.thumbnail,
-    }
-  }
-}
-
-const getId = (all: String[]) : String => {
-  return all.join('/')
-}
+import { transformContent } from '../../services/guardian/_transform'
+import { getId } from '../../helpers/utils'
 
 type Props = {
   content: NewsContent
