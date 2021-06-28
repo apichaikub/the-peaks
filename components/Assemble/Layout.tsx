@@ -1,16 +1,20 @@
+import { SEARCH_TYPE } from "../../constants/news"
 import Loading from "../Base/Loading"
 import Footer from "./TheFooter"
 import TheHeader from "./TheHeader"
 
 type Props = {
-  loading: Boolean;
+  loading?: Boolean;
   children?: JSX.Element | JSX.Element[];
+  onSearchSubmit?(value: String, type: SEARCH_TYPE): void;
 }
 
-const Layout = ({ loading, children } : Props) => {
+const Layout = ({ loading = false, children, onSearchSubmit } : Props) => {
   return (
     <>
-      <TheHeader/>
+      <TheHeader
+        onSearchSubmit={onSearchSubmit}
+      />
       { loading ? <Loading/> : children }
       <Footer/>
     </>

@@ -5,6 +5,7 @@ import Layout from '../../components/Assemble/Layout'
 import Content from '../../components/Assemble/Content'
 import { NewsContent } from '../../constants/news'
 import { getDetail } from '../../services/guardian/news.api'
+import useSearch from '../../hook/useSearch'
 
 const transformContent = (result: any) : NewsContent => {
   return {
@@ -27,6 +28,8 @@ type Props = {
 }
 
 const Index = ({ content } : Props) => {
+  const { handleSearchSubmit } = useSearch()
+
   return (
     <div>
       <Head>
@@ -34,7 +37,10 @@ const Index = ({ content } : Props) => {
         <meta name="description" content={ content.summary ? content.summary.toString() : '' } />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout loading={false}>
+      <Layout
+        loading={false}
+        onSearchSubmit={handleSearchSubmit}
+      >
         <Content
           isSaved={true}
           createdAt={content.createdAt}

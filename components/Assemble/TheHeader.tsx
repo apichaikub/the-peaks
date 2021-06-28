@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { SEARCH_TYPE } from "../../constants/news"
 import Container from "../Base/Container"
 import InputSearch from "../Base/InputSearch"
 import Logo from "../Base/Logo"
@@ -26,7 +27,11 @@ const WrapperRight = styled.div`
   justify-content: flex-end;
 `
 
-const TheHeader = () => {
+type Props = {
+  onSearchSubmit?(value: String, type: SEARCH_TYPE): void;
+}
+
+const TheHeader = ({ onSearchSubmit } : Props) => {
   return (
     <Wrapper>
       <Container>
@@ -35,7 +40,9 @@ const TheHeader = () => {
             <Logo/>
           </WrapperLeft>
           <WrapperRight>
-            <InputSearch/>
+            <InputSearch
+              onSearchSubmit={onSearchSubmit}
+            />
           </WrapperRight>
         </WrapperInner>
       </Container>

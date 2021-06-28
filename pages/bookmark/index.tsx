@@ -1,20 +1,22 @@
 import Head from 'next/head'
-import TheHeader from '../../components/Assemble/TheHeader'
-import Footer from '../../components/Assemble/TheFooter'
-import Loading from '../../components/Base/Loading'
+import Layout from '../../components/Assemble/Layout'
 import Bookmark from '../../components/Assemble/Bookmark'
+import useSearch from '../../hook/useSearch'
 
 export default function Index() {
+  const { handleSearchSubmit } = useSearch()
+
   return (
     <div>
       <Head>
         <title>Bookmark | The Peaks</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <TheHeader/>
-      {/* <Loading/> */}
-      <Bookmark/>
-      <Footer/>
+      <Layout
+        onSearchSubmit={handleSearchSubmit}
+      >
+        <Bookmark/>
+      </Layout>
     </div>
   )
 }

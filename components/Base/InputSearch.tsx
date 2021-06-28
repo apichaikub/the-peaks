@@ -1,5 +1,7 @@
-import { useRef, useState } from "react"
+import { useRouter } from "next/router"
+import { useEffect, useRef, useState } from "react"
 import styled, { keyframes } from "styled-components"
+import { SEARCH_TYPE } from "../../constants/news"
 import IconSearch from "./IconSearch"
 import Input from "./Input"
 
@@ -50,9 +52,32 @@ const Wrapper = styled.div.attrs((props : TWrapperProps) => ({
   }
 `
 
-const InputSearch = () => {
+type Props = {
+  onSearchSubmit?(value: String, type: SEARCH_TYPE): void;
+}
+
+const InputSearch = ({ onSearchSubmit } : Props) => {
+  const router = useRouter()
+  const { query } = router
+
   const inputRef = useRef<HTMLInputElement>(null)
+  const [isActive, setIsActive] = useState<Boolean>(false)
+  const [input, setInput] = useState<String>(query.q ? query.q.toString() : '')
   const [toggle, setToggle] = useState<Boolean>(false)
+  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    setIsActive(toggle ? true : false)
+  }, [toggle])
+
+  useEffect(() => {
+    if(query.q) {
+      setIsActive(true)
+    } else {
+      setIsActive(false)
+    }
+  }, [query])
+
   const onClickIconSearch = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const newToggle = !toggle
     setToggle(newToggle)
@@ -64,12 +89,38 @@ const InputSearch = () => {
       }, 500)
     }
   }
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value)
+
+    if(onSearchSubmit) {
+      if(timer) {
+        clearInterval(timer)
+      }
+      setTimer(setTimeout(() => {
+        onSearchSubmit(e.target.value, SEARCH_TYPE.AUTO)
+      }, 1500))
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if(e.code === 'Enter' && onSearchSubmit && input) {
+      onSearchSubmit(input, SEARCH_TYPE.ENTER)
+    }
+  }
+
   return (
     <Wrapper
-      active={toggle ? true : false}
+      active={isActive}
     >
       <WrapperInner>
-        <InputCustom ref={inputRef} placeholder="Search all news"/>
+        <InputCustom
+          ref={inputRef}
+          value={input.toString()}
+          placeholder="Search all news"
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
         <IconSearch
           onClick={onClickIconSearch}
         />

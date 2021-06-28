@@ -3,8 +3,13 @@ import H1 from "../Base/H1"
 import ListNews from "../Combine/ListNews"
 import Sidebar from "../Combine/Sidebar"
 import Filter from "../Combine/Filter"
+import { NewsItem } from "../../constants/news"
 
-const SearchResult = () => {
+type Props = {
+  items: NewsItem[];
+}
+
+const SearchResult = ({ items } : Props) => {
   return (
     <div style={{ marginTop: '14px' }}>
       <Sidebar>
@@ -12,7 +17,9 @@ const SearchResult = () => {
         <Filter/>
       </Sidebar>
       <Container>
-        <ListNews/>
+        <ListNews
+          items={items}
+        />
       </Container>
     </div>
   )

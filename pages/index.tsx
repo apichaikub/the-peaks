@@ -5,22 +5,14 @@ import News from '../components/Assemble/News'
 import Layout from '../components/Assemble/Layout'
 import { getSearch } from '../services/guardian/news.api'
 import { NewsItem } from '../constants/news'
-
-const transformItems = (items : any[]) : NewsItem[] => {
-  return items.map((item: any) => {
-    return {
-      id: item.id,
-      cover: item.fields.thumbnail,
-      title: item.fields.headline,
-      summary: item.fields.trailText,
-    }
-  })
-}
+import { transformItems } from '../services/guardian/_transform'
+import useSearch from '../hook/useSearch'
 
 export default function Index() {
   const [loading, setLoading] = useState<Boolean>(false)
   const [topStories, setTopStories] = useState<NewsItem[]>([])
   const [sportItems, setSportItems] = useState<NewsItem[]>([])
+  const { handleSearchSubmit } = useSearch()
 
   useEffect(() => {
     setLoading(true)
@@ -58,7 +50,10 @@ export default function Index() {
         <title>Home | The Peaks</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout loading={loading}>
+      <Layout
+        loading={loading}
+        onSearchSubmit={handleSearchSubmit}
+      >
         <TopStory
           title="Top stories"
           topStories={topStories}

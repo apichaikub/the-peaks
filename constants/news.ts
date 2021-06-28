@@ -14,3 +14,8 @@ export type NewsContent = {
     src: String;
   }
 }
+
+export enum SEARCH_TYPE {
+  AUTO,
+  ENTER,
+}
