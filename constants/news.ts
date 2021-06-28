@@ -18,6 +18,7 @@ export type NewsContent = {
 export enum SEARCH_TYPE {
   AUTO,
   ENTER,
+  CLICK,
 }
 
 // the string value following theguardian apis, see doc: https://open-platform.theguardian.com/documentation/

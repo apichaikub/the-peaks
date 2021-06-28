@@ -135,7 +135,7 @@ const CardNews = ({ id, cover, title, summary, styles }: TCardNewsProps) => {
       <CardBodyCustom>
         <Link href={link}>
           {/* TODO: handle not found and not provided an image */}
-          <Image src={cover.toString()} alt="Image" layout="fill" objectFit="cover" />
+          <Image src={cover.toString()} alt={title.toString()} layout="fill" objectFit="cover" />
         </Link>
       </CardBodyCustom> }
       <CardFooterCustom { ...footerProps }>

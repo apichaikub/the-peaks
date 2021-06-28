@@ -1,11 +1,12 @@
 import { useRouter } from "next/router"
 import { SEARCH_TYPE } from "../constants/news"
+const { ENTER, CLICK } = SEARCH_TYPE
 
 const useSearch = () => {
   const router = useRouter()
 
   const handleSearchSubmit = (value: String, type: SEARCH_TYPE) => {
-    if(type === SEARCH_TYPE.ENTER) {
+    if([ENTER, CLICK].includes(type)) {
       router.push({
         pathname: '/search',
         query: {

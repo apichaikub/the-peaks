@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { FILTER, NewsItem, SEARCH_TYPE } from '../../constants/news'
 import { getSearch } from '../../services/guardian/news.api'
 import { transformItems } from '../../services/guardian/_transform'
+import NotFoundData from '../../components/Base/NotFoundData'
 
 const getFilterValue = (str: String) : FILTER => {
   if(str === FILTER.OLDEST) {
@@ -46,6 +47,10 @@ const Index = () => {
         console.log('error', error)
       })
   }
+
+  useEffect(() => {
+    setKeyword('xxx')
+  }, [])
   
   useEffect(() => {
     if(query.q) {
@@ -92,6 +97,9 @@ const Index = () => {
           filter={{ orderBy }}
           onChangeOrderBy={handleChangeOrderBy}
         />
+        <NotFoundData>
+          Not found data 😵
+        </NotFoundData>
       </Layout>
     </div>
   )

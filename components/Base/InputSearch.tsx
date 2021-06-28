@@ -72,11 +72,14 @@ const InputSearch = ({ onSearchSubmit } : Props) => {
 
   useEffect(() => {
     if(query.q) {
+      setToggle(true)
       setIsActive(true)
+      setInput(query.q.toString())
     } else {
+      setToggle(false)
       setIsActive(false)
     }
-  }, [query])
+  }, [query.q])
 
   const onClickIconSearch = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const newToggle = !toggle
@@ -87,6 +90,14 @@ const InputSearch = ({ onSearchSubmit } : Props) => {
           inputRef.current.focus()
         }
       }, 500)
+    }
+  }
+
+  const onClickIconEnter = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if(onSearchSubmit && input.trim().length) {
+      onSearchSubmit(input, SEARCH_TYPE.CLICK)
+    } else if(inputRef.current) {
+      inputRef.current.focus()
     }
   }
   
@@ -121,9 +132,9 @@ const InputSearch = ({ onSearchSubmit } : Props) => {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
-        <IconSearch
-          onClick={onClickIconSearch}
-        />
+        { !toggle
+          ? <IconSearch src="/images/search-icon@2x.svg" width={17} height={17} onClick={onClickIconSearch}/>
+          : <IconSearch src="/images/enter.svg" width={16} height={16} onClick={onClickIconEnter}/> }
       </WrapperInner>
     </Wrapper>
   )

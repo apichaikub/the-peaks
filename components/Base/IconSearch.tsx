@@ -22,16 +22,19 @@ const Icon = styled.span`
 `
 
 type TIconSearchProps = {
+  src: String;
+  width: Number;
+  height: Number;
   onClick?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
 }
 
-const IconSearch = ({ onClick }: TIconSearchProps) => {
+const IconSearch = ({ src, width, height, onClick }: TIconSearchProps) => {
   return (
     <WrapperIconSearch
       onClick={(e) => onClick && onClick(e)}
     >
       <Icon>
-        <Image src="/images/search-icon@2x.svg" alt="Search Icon" width={17} height={17} />
+        <Image src={src.toString()} alt="Search Icon" width={Number(width)} height={Number(height)} />
       </Icon>
     </WrapperIconSearch>
   )
