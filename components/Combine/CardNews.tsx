@@ -5,6 +5,7 @@ import CardBody from "../Base/CardBody"
 import CardFooter from "../Base/CardFooter"
 import Link from "../Base/Link"
 import Summary from "../Base/Summary"
+import { removeHTML } from "../../helpers/dom"
 
 type BORDER_COLOR = '#388E3C' | '#D32F2F' | '#FFC107' | '#2196F3';
 
@@ -133,6 +134,7 @@ const CardNews = ({ id, cover, title, summary, styles }: TCardNewsProps) => {
       { cover &&
       <CardBodyCustom>
         <Link href={link}>
+          {/* TODO: handle not found and not provided an image */}
           <Image src={cover.toString()} alt="Image" layout="fill" objectFit="cover" />
         </Link>
       </CardBodyCustom> }
@@ -145,7 +147,7 @@ const CardNews = ({ id, cover, title, summary, styles }: TCardNewsProps) => {
         { summary &&
         <SummaryCustom { ...summaryProps }>
           <Link href={link}>
-            { summary }
+            { removeHTML(summary ? summary.toString() : '') }
           </Link>
         </SummaryCustom> }
       </CardFooterCustom>

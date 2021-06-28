@@ -3,9 +3,19 @@ import Head from 'next/head'
 import SearchResult from '../../components/Assemble/SearchResult'
 import Layout from '../../components/Assemble/Layout'
 import { useEffect, useState } from 'react'
-import { NewsItem, SEARCH_TYPE } from '../../constants/news'
+import { FILTER, NewsItem, SEARCH_TYPE } from '../../constants/news'
 import { getSearch } from '../../services/guardian/news.api'
 import { transformItems } from '../../services/guardian/_transform'
+
+const getFilterValue = (str: String) : FILTER => {
+  if(str === FILTER.OLDEST) {
+    return FILTER.OLDEST
+  } else if(str === FILTER.MOST_POPULAR) {
+    return FILTER.MOST_POPULAR
+  } else {
+    return FILTER.NEWEST
+  }
+}
 
 const Index = () => {
   const router = useRouter()
@@ -13,9 +23,10 @@ const Index = () => {
 
   const [loading, setLoading] = useState<Boolean>(false)
   const [keyword, setKeyword] = useState<String>(query.q ? query.q.toString() : '')
+  const [orderBy, setOrderBy] = useState<FILTER>(getFilterValue(query.orderBy ? query.orderBy.toString() : ''))
   const [results, setResults] = useState<NewsItem[]>([])
 
-  const fetchData = (keyword: String) => {
+  const fetchData = (keyword: String, orderBy: FILTER) => {
     setLoading(true)
     getSearch({
       'q': keyword,
@@ -23,6 +34,7 @@ const Index = () => {
       'page-size': 12,
       'show-elements': 'all',
       'show-fields': 'thumbnail,trailText,headline',
+      'order-by': orderBy || null,
     })
       .then((json) => {
         const transformedResults = transformItems(json.data.response.results)
@@ -34,26 +46,35 @@ const Index = () => {
         console.log('error', error)
       })
   }
-
+  
   useEffect(() => {
     if(query.q) {
       setKeyword(query.q.toString())
+    }
+    if(query.orderBy) {
+      setOrderBy(getFilterValue(query.orderBy.toString()))
     }
   }, [query])
 
   useEffect(() => {
     if(keyword) {
-      fetchData(keyword)
+      fetchData(keyword, orderBy)
     }
-  }, [keyword])
+  }, [keyword, orderBy])
 
   const handleSearchSubmit = (value: String, type: SEARCH_TYPE) => {
     setKeyword(value)
     router.query.q = value.toString()
     router.push(router)
     if(type === SEARCH_TYPE.ENTER) {
-      fetchData(keyword)
+      fetchData(keyword, orderBy)
     }
+  }
+
+  const handleChangeOrderBy = (value: FILTER) => {
+    setOrderBy(value)
+    router.query.orderBy = value.toString()
+    router.push(router)
   }
   
   return (
@@ -68,6 +89,8 @@ const Index = () => {
       >
         <SearchResult
           items={results}
+          filter={{ orderBy }}
+          onChangeOrderBy={handleChangeOrderBy}
         />
       </Layout>
     </div>

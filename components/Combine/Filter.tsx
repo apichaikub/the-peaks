@@ -3,6 +3,7 @@ import ButtonIconBookmark from "./ButtonIconBookmark"
 import DropdownFilterNews from "./DropdownFilterNews"
 import Actions from "../Base/Action"
 import Link from "../Base/Link"
+import { FILTER } from "../../constants/news"
 
 const WrapperButton = styled.div<{ showDropdownNews: Boolean; }>`
   position: relative;
@@ -10,12 +11,19 @@ const WrapperButton = styled.div<{ showDropdownNews: Boolean; }>`
   margin-right: ${props => props.showDropdownNews && '22px'};
 `
 
-type Props = {
-  showButtonBookmark?: Boolean;
-  showDropdownNews?: Boolean;
+export type TFilterProps = {
+  filter?: {
+    orderBy?: FILTER;
+  };
 }
 
-const Top5Actions = ({ showButtonBookmark = true, showDropdownNews = true } : Props) => {
+interface Props extends TFilterProps {
+  showButtonBookmark?: Boolean;
+  showDropdownNews?: Boolean;
+  onChangeOrderBy?(value: FILTER): void;
+}
+
+const Top5Actions = ({ showButtonBookmark = true, showDropdownNews = true, filter = {}, onChangeOrderBy } : Props) => {
   return (
     <Actions>
       { showButtonBookmark &&
@@ -30,7 +38,10 @@ const Top5Actions = ({ showButtonBookmark = true, showDropdownNews = true } : Pr
         </Link>
       </WrapperButton> }
       { (showDropdownNews) &&
-      <DropdownFilterNews/> }
+      <DropdownFilterNews
+        value={filter?.orderBy || FILTER.NEWEST}
+        onChange={onChangeOrderBy}
+      /> }
     </Actions>
   )
 }

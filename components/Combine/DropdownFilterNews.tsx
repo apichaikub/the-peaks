@@ -1,26 +1,37 @@
 import { useState } from "react"
+import { FILTER } from "../../constants/news"
 import Dropdown from "../Base/Dropdown"
-import { TValue as TValueDropdown } from '../Base/Dropdown'
 
-const DropdownFilterNews = () => {
-  const [selected, setSelected] = useState<TValueDropdown>(null)
-  const options = [
-    {
-      text: "Newest first",
-      value: 1,
-    },
-    {
-      text: "Oldest first",
-      value: 2,
-    },
-    {
-      text: "Most popular",
-      value: 3,
-    },
-  ]
-  const handleChange = (value: TValueDropdown) => {
+const options = [
+  {
+    text: "Newest first",
+    value: FILTER.NEWEST,
+  },
+  {
+    text: "Oldest first",
+    value: FILTER.OLDEST,
+  },
+  {
+    text: "Most popular",
+    value: FILTER.MOST_POPULAR,
+  },
+]
+
+type Props = {
+  value: FILTER;
+  onChange?(value: FILTER): void;
+}
+
+const DropdownFilterNews = ({ value, onChange } : Props) => {
+  const [selected, setSelected] = useState<FILTER>(value || FILTER.NEWEST)
+
+  const handleChange = (value: FILTER) => {
     setSelected(value)
+    if(onChange) {
+      onChange(value)
+    }
   }
+  
   return (
     <Dropdown
       value={selected}
