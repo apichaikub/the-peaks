@@ -1,11 +1,9 @@
 module.exports = {
-  transform: {
-    "^.+\\.tsx?$": "ts-jest"
+  setupFilesAfterEnv: ["./jest.setup.js"],
+  moduleNameMapper: {
+    "^@components(.*)$": "<rootDir>/components$1",
+    "^@pages(.*)$": "<rootDir>/pages$1",
+    "^@hooks(.*)$": "<rootDir>/hooks$1",
   },
-  setupFilesAfterEnv: [
-    "@testing-library/jest-dom/extend-expect"
-  ],
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   testEnvironment: 'jsdom',
 };
