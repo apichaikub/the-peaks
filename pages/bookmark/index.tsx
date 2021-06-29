@@ -3,12 +3,10 @@ import Layout from '../../components/Assemble/Layout'
 import Bookmark from '../../components/Assemble/Bookmark'
 import useBookmark from '../../hook/useBookmark'
 import NotFoundData from '../../components/Base/NotFoundData'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { FILTER, NewsItem } from '../../constants/news'
+import { NewsItem } from '../../constants/news'
 import { getDetail } from '../../services/guardian/news.api'
 import { transformItems } from '../../services/guardian/_transform'
-import { getFilterValue } from '../../helpers/filter'
 import { AxiosResponse } from 'axios'
 import useSearch from '../../hook/useSearch'
 
@@ -54,6 +52,7 @@ const Index = () => {
       </Head>
       <Layout
         loading={loading}
+        showFooter={false}
         onSearchSubmit={handleSearchSubmit}
       >
         { results.length ?
