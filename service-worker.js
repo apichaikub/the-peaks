@@ -184,7 +184,6 @@ setCatchHandler(({ event }) => {
     event.request.mode !== "same-origin"
   )
     return;
-  console.log('event.request', event.request)
   const url = decodeURIComponent(event.request.url)
   switch (event.request.destination) {
     case "document":

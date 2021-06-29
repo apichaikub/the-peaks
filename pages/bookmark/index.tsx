@@ -39,7 +39,6 @@ const Index = () => {
         })
         .catch((error) => {
           // TODO: handle with toast
-          console.log('error', error)
         })
     }
   }, [fetchNews, isLoaded, loading])
