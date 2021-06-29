@@ -24,9 +24,11 @@ An "Front-End Development Test" for Seven Peaks Software
 Run the project on local:
 
 ```bash
+# for PWA and supported offline mode
+npm run build && npm run start
+
+# or basically for development
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
