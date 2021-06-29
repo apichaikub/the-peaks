@@ -25,7 +25,7 @@ Run the project on local:
 
 ```bash
 # for PWA and supported offline mode
-npm run build && npm run start
+npm run dev-pwa
 
 # or basically for development
 npm run dev
