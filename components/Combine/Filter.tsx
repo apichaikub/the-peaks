@@ -1,14 +1,26 @@
 import styled from "styled-components"
 import ButtonIconBookmark from "./ButtonIconBookmark"
 import DropdownFilterNews from "./DropdownFilterNews"
-import Actions from "../Base/Action"
+import Action from "../Base/Action"
 import Link from "../Base/Link"
 import { FILTER } from "../../constants/news"
+
+const ActionCustom = styled(Action)`
+  @media (min-width: 0px) and (max-width: 991.98px) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+`
 
 const WrapperButton = styled.div<{ showDropdownNews: Boolean; }>`
   position: relative;
   top: 7px;
   margin-right: ${props => props.showDropdownNews && '22px'};
+
+  @media (min-width: 0px) and (max-width: 991.98px) {
+    top: 0;
+    margin-right: 0;
+  }
 `
 
 export type TFilterProps = {
@@ -25,7 +37,7 @@ interface Props extends TFilterProps {
 
 const Top5Actions = ({ showButtonBookmark = true, showDropdownNews = true, filter = {}, onChangeOrderBy } : Props) => {
   return (
-    <Actions>
+    <ActionCustom>
       { showButtonBookmark &&
       <WrapperButton
         showDropdownNews={showDropdownNews}
@@ -42,7 +54,7 @@ const Top5Actions = ({ showButtonBookmark = true, showDropdownNews = true, filte
         value={filter?.orderBy || FILTER.NEWEST}
         onChange={onChangeOrderBy}
       /> }
-    </Actions>
+    </ActionCustom>
   )
 }
 

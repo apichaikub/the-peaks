@@ -61,7 +61,7 @@ const ItemSelected = styled(Item)`
 
 const List = styled.ul`
   position: relative;
-  width: 255px;
+  min-width: 200px;
   list-style: none;
   margin: 0;
   padding: 0;
