@@ -7,16 +7,7 @@ import { FILTER, NewsItem, SEARCH_TYPE } from '../../constants/news'
 import { getSearch } from '../../services/guardian/news.api'
 import { transformItems } from '../../services/guardian/_transform'
 import NotFoundData from '../../components/Base/NotFoundData'
-
-const getFilterValue = (str: String) : FILTER => {
-  if(str === FILTER.OLDEST) {
-    return FILTER.OLDEST
-  } else if(str === FILTER.MOST_POPULAR) {
-    return FILTER.MOST_POPULAR
-  } else {
-    return FILTER.NEWEST
-  }
-}
+import { getFilterValue } from '../../helpers/filter'
 
 const Index = () => {
   const router = useRouter()
@@ -83,7 +74,7 @@ const Index = () => {
   }
   
   return (
-    <div>
+    <>
       <Head>
         <title>Search results | The Peaks</title>
         <link rel="icon" href="/favicon.ico" />
@@ -92,16 +83,18 @@ const Index = () => {
         loading={loading}
         onSearchSubmit={handleSearchSubmit}
       >
+        { results.length ?
         <SearchResult
           items={results}
           filter={{ orderBy }}
           onChangeOrderBy={handleChangeOrderBy}
-        />
+        /> :
         <NotFoundData>
           Not found data 😵
         </NotFoundData>
+        }
       </Layout>
-    </div>
+    </>
   )
 }
 
