@@ -50,7 +50,7 @@ const Index = () => {
     <div>
       <Head>
         <title>Bookmark ({ bookmarks.length }) | The Peaks</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <Layout
         loading={loading}

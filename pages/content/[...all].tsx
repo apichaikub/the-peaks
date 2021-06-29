@@ -39,7 +39,7 @@ const Index = ({ content } : Props) => {
       <Head>
         <title>{ content.title }</title>
         <meta name="description" content={ content.summary ? content.summary.toString() : '' } />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <Layout
         loading={false}

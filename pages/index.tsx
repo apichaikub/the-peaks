@@ -86,7 +86,7 @@ export default function Index() {
     <div>
       <Head>
         <title>Home | The Peaks</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <Layout
         loading={loading}
