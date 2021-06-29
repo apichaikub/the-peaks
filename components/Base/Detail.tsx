@@ -11,6 +11,10 @@ const Detail = styled.p`
     width: 100%;
     height: auto;
   }
+
+  iframe {
+    display: none;
+  }
 `
 
 export default Detail
