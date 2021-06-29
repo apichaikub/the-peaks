@@ -11,6 +11,7 @@ import Detail from '../components/Base/Detail'
 import HelperText from '../components/Base/HelperText'
 import Line from '../components/Base/Line'
 import Loading from '../components/Base/Loading'
+import Toast from '../components/Base/Toast'
 
 export const _Button = () => (
   <Button>Button</Button>
@@ -104,6 +105,27 @@ export const _Line = () => (
 export const _Loading = () => (
   <Loading/>
 )
+
+export const _ToastBooked = () => (
+  <Toast
+    bgColor="#388E3C"
+    text="saved to bookmarks"
+    iconSrc="images/bookmarkon-icon@2x.svg"
+    iconWidth={10}
+    iconHeight={13}
+  />
+)
+
+export const _ToastBook = () => (
+  <Toast
+    bgColor="#D32F2F"
+    text="removed from bookmarks"
+    iconSrc="images/bookmarkoff-icon@2x.svg"
+    iconWidth={10}
+    iconHeight={13}
+  />
+)
+
 
 const story = {
   title: 'Base'

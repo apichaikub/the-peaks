@@ -7,7 +7,9 @@ import { getDetail } from '../../services/guardian/news.api'
 import { transformContent } from '../../services/guardian/_transform'
 import { getId } from '../../helpers/utils'
 import useBookmark from '../../hook/useBookmark'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import Toast from '../../components/Base/Toast'
+import useToastBookmark from '../../hook/useToastBookmark'
 
 type Props = {
   content: NewsContent
@@ -16,21 +18,18 @@ type Props = {
 const Index = ({ content } : Props) => {
   const { handleSearchSubmit } = useSearch()
   const { isSaved, save, remove } = useBookmark()
+  const { isShowBookedToast, isShowRemovedToast, showBookedToast, showRemovedToast } = useToastBookmark()
   const [isBooked, setIsBooked] = useState<Boolean>(isSaved(content.id))
 
   const handleClickButtonBookmark = () => {
     if(!isBooked) {
       save(content.id)
       setIsBooked(true)
-      setTimeout(() => {
-        alert('SAVED TO BOOKMARKS ⭐')
-      }, 100)
+      showBookedToast({ delay: 3000 })
     } else {
       remove(content.id)
       setIsBooked(false)
-      setTimeout(() => {
-        alert('REMOVED FROM BOOKMARKS')
-      }, 100)
+      showRemovedToast({ delay: 3000 })
     }
   }
 
@@ -45,6 +44,20 @@ const Index = ({ content } : Props) => {
         loading={false}
         onSearchSubmit={handleSearchSubmit}
       >
+        { isShowBookedToast && <Toast
+          bgColor="#388E3C"
+          text="saved to bookmarks"
+          iconSrc="/images/bookmarkon-icon@2x.svg"
+          iconWidth={10}
+          iconHeight={13}
+        /> }
+        { isShowRemovedToast && <Toast
+          bgColor="#D32F2F"
+          text="removed from bookmarks"
+          iconSrc="/images/bookmarkoff-icon@2x.svg"
+          iconWidth={10}
+          iconHeight={13}
+        /> }
         <Content
           isSaved={isBooked}
           createdAt={content.createdAt}

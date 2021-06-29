@@ -5,9 +5,11 @@ import InputSearch from "../Base/InputSearch"
 import Logo from "../Base/Logo"
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   background-color: #09357B;
   min-height: 126px;
+  z-index: 1;
 `
 
 const WrapperInner = styled.div`
