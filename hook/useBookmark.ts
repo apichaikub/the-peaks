@@ -11,6 +11,7 @@ const BOOKMARKS_KEY = 'bookmarks'
 
 const useBookmark = () => {
   const [bookmarks, setBookmarks] = useState<Item[]>([])
+  const bookmarkIds : Id[] = bookmarks.map((item) => item.id)
 
   useEffect(() => {
     const items = getItems()
@@ -67,6 +68,7 @@ const useBookmark = () => {
 
   return {
     bookmarks,
+    bookmarkIds,
     save,
     remove,
     isSaved,
