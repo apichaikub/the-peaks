@@ -5,6 +5,7 @@ import Sidebar from "../Combine/Sidebar"
 import Filter, { TFilterProps } from "../Combine/Filter"
 import Top5News from "../Combine/Top5News"
 import { FILTER, NewsItem } from "../../constants/news"
+import NotFoundData from "../Base/NotFoundData"
 
 interface Props extends TFilterProps {
   title: String;
@@ -25,11 +26,13 @@ const TopStory = ({ title, topStories, filter, onChangeOrderBy } : Props) => {
         />
       </Sidebar>
       <Container>
-        { top5Items.length &&
-        <Top5News
+        { top5Items.length
+        ? <Top5News
           items={top5Items}
-        /> }
-        { restItems.length &&
+          />
+        : <NotFoundData>Not found data 😵</NotFoundData> }
+
+        { !!restItems.length &&
         <ListNews
           items={restItems}
         /> }

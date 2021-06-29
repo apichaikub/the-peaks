@@ -66,14 +66,19 @@ Index.getInitialProps = async ({ query } : any) => {
   const all : String[] = query.all ? Array.from(query.all) : []
   const id = getId(all)
   
-  // TODO: try catch, redirect to error pages
-  const json = await getDetail(id, {
-    'show-elements': 'all',
-    'show-fields': 'thumbnail,trailText,headline,body',
-  })
+  let content = {}
+  try {
+    const json = await getDetail(id, {
+      'show-elements': 'all',
+      'show-fields': 'thumbnail,trailText,headline,body',
+    })
+    content = json.data.response.content
+  } catch (error) {
+    // TODO: handle error
+  }
 
   return {
-    content: transformContent(json.data.response.content),
+    content: transformContent(content),
   }
 }
 

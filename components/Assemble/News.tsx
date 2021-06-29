@@ -3,6 +3,7 @@ import ListNews from "../Combine/ListNews"
 import Sidebar from "../Combine/Sidebar"
 import H2 from "../Base/H2"
 import { NewsItem } from "../../constants/news"
+import NotFoundData from "../Base/NotFoundData"
 
 type Props = {
   title: String;
@@ -16,9 +17,11 @@ const News = ({ title, items = [] } : Props) => {
         <H2>{ title }</H2>
       </Sidebar>
       <Container>
-        <ListNews
-          items={items}
-        />
+        { items.length
+        ? <ListNews
+            items={items}
+          />
+        : <NotFoundData>Not found data 😵</NotFoundData> }
       </Container>
     </>
   )
