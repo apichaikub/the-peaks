@@ -1,0 +1,14 @@
+{
+  "name": "The Peaks",
+  "short_name": "Web Content",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
