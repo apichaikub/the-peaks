@@ -63,9 +63,10 @@ export interface IContentNewsProps extends Media {
   topic: String;
   summary: String;
   detail: String;
+  onClickButtonBookmark?(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
-const ContentNews = ({ isSaved, createdAt, topic, summary, detail, image } : IContentNewsProps) => {
+const ContentNews = ({ isSaved, createdAt, topic, summary, detail, image, onClickButtonBookmark } : IContentNewsProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
       setMounted(true)
@@ -77,10 +78,12 @@ const ContentNews = ({ isSaved, createdAt, topic, summary, detail, image } : ICo
   return (
     <Wrapper>
       <Box>
+        { mounted &&
         <ButtonIconBookmark
           active={isSaved}
           text={buttonText}
-        />
+          onClick={onClickButtonBookmark}
+        /> }
         <HelperText
           transform="uppercase"
           style={{ display: 'flex', margin: '18px 0 10px 0' }}

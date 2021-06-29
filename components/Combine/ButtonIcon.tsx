@@ -19,11 +19,12 @@ type TButtonIconProps = {
   preIcon: any;
   text?: String;
   children?: JSX.Element | JSX.Element[];
+  onClick?(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
-const ButtonIcon = ({ preIcon, text, children }: TButtonIconProps) => {
+const ButtonIcon = ({ preIcon, text, children, ...rest }: TButtonIconProps) => {
   return (
-    <ButtonCustom>
+    <ButtonCustom { ...rest }>
       <PreIcon>{ preIcon }</PreIcon>
       { text || children }
     </ButtonCustom>

@@ -13,6 +13,7 @@ export const transformItems = (items : any[]) : NewsItem[] => {
 
 export const transformContent = (result: any) : NewsContent => {
   return {
+    id: result?.id,
     title: result?.fields?.headline,
     summary: result?.fields?.trailText,
     createdAt: result?.webPublicationDate,

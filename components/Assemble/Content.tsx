@@ -1,7 +1,7 @@
 import Container from "../Base/Container"
 import ContentNews, { IContentNewsProps } from "../Combine/ContentNews"
 
- const Content = ({ isSaved, createdAt, topic, summary, detail, image } : IContentNewsProps) => {
+ const Content = ({ isSaved, createdAt, topic, summary, detail, image, onClickButtonBookmark } : IContentNewsProps) => {
   return (
     <Container>
       <ContentNews
@@ -11,6 +11,7 @@ import ContentNews, { IContentNewsProps } from "../Combine/ContentNews"
         summary={summary}
         detail={detail}
         image={image}
+        onClickButtonBookmark={onClickButtonBookmark}
       />
     </Container>
   )

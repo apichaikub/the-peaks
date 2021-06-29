@@ -6,6 +6,7 @@ export type NewsItem = {
 }
 
 export type NewsContent = {
+  id: String;
   title: String;
   summary: String;
   createdAt: String;

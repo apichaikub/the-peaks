@@ -6,6 +6,8 @@ import { NewsContent } from '../../constants/news'
 import { getDetail } from '../../services/guardian/news.api'
 import { transformContent } from '../../services/guardian/_transform'
 import { getId } from '../../helpers/utils'
+import useBookmark from '../../hook/useBookmark'
+import { useEffect, useState } from 'react'
 
 type Props = {
   content: NewsContent
@@ -13,6 +15,24 @@ type Props = {
 
 const Index = ({ content } : Props) => {
   const { handleSearchSubmit } = useSearch()
+  const { isSaved, save, remove } = useBookmark()
+  const [isBooked, setIsBooked] = useState<Boolean>(isSaved(content.id))
+
+  const handleClickButtonBookmark = () => {
+    if(!isBooked) {
+      save(content.id)
+      setIsBooked(true)
+      setTimeout(() => {
+        alert('SAVED TO BOOKMARKS ⭐')
+      }, 100)
+    } else {
+      remove(content.id)
+      setIsBooked(false)
+      setTimeout(() => {
+        alert('REMOVED FROM BOOKMARKS')
+      }, 100)
+    }
+  }
 
   return (
     <div>
@@ -26,7 +46,7 @@ const Index = ({ content } : Props) => {
         onSearchSubmit={handleSearchSubmit}
       >
         <Content
-          isSaved={true}
+          isSaved={isBooked}
           createdAt={content.createdAt}
           topic={content.title}
           summary={content.summary}
@@ -35,6 +55,7 @@ const Index = ({ content } : Props) => {
             src: content.image.src,
             caption: '',
           }}
+          onClickButtonBookmark={handleClickButtonBookmark}
         />
       </Layout>
     </div>
