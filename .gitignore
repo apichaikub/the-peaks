@@ -35,3 +35,6 @@ yarn-error.log*
 
 # public
 /public/sw.js
+
+# logs
+yarn.lock
