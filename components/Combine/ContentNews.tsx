@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getFriendlyDate } from "../../helpers/date";
 import Detail from "../Base/Detail";
 import H1 from "../Base/H1";
 import HelperText from "../Base/HelperText";
@@ -75,6 +76,8 @@ const ContentNews = ({ isSaved, createdAt, topic, summary, detail, image, onClic
   const buttonText = isSaved
     ? 'REMOVE BOOKMARK'
     : 'ADD BOOKMARK'
+    
+  const friendlyDate = getFriendlyDate(createdAt.toString())
   return (
     <Wrapper>
       <Box>
@@ -88,7 +91,7 @@ const ContentNews = ({ isSaved, createdAt, topic, summary, detail, image, onClic
           transform="uppercase"
           style={{ display: 'flex', margin: '18px 0 10px 0' }}
         >
-          { createdAt }
+          { friendlyDate }
         </HelperText>
         <Topic>{ topic }</Topic>
         { mounted &&
