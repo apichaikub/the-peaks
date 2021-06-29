@@ -38,10 +38,6 @@ const Index = () => {
         console.log('error', error)
       })
   }
-
-  useEffect(() => {
-    setKeyword('xxx')
-  }, [])
   
   useEffect(() => {
     if(query.q) {
