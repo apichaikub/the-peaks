@@ -2,7 +2,7 @@ import Container from "../Base/Container"
 import H1 from "../Base/H1"
 import ListNews from "../Combine/ListNews"
 import Sidebar from "../Combine/Sidebar"
-import Filter, { TFilterProps } from "../Combine/Filter"
+import { TFilterProps } from "../Combine/Filter"
 import { FILTER, NewsItem } from "../../constants/news"
 
 interface Props extends TFilterProps {

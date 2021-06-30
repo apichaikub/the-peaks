@@ -1,5 +1,4 @@
 import { useState } from "react"
-import Toast from "../components/Base/Toast"
 
 type Props = {
   delay: number;

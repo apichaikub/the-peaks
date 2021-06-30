@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { NewsItem } from "../../constants/news"
-import Container from "../Base/Container"
 import CardNews from "../Combine/CardNews"
 import { TStyles } from '../Combine/CardNews'
 
