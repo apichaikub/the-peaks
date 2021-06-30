@@ -22,6 +22,14 @@ See live on: https://the-peaks-project.herokuapp.com/
 ---
 
 #### Getting Started
+ 
+Required:
+- nodejs latest version
+
+```bash
+# install dependencies from package.json
+npm i
+```
 
 Run the project on local:
 
