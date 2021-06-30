@@ -3,6 +3,8 @@
 ###### Introduction
 An "Front-End Development Test" for Seven Peaks Software
 
+See live on: https://the-peaks-project.herokuapp.com/
+
 ###### Implementation notes and requirements
 - Next, React latest version
 - TypeScript
@@ -32,6 +34,23 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
+
+#### Testing
+
+Run tests on local (optional):
+
+```bash
+# run all tests
+npm run test
+
+# run ui tests
+npm run test:ui
+
+# run unit tests
+npm run test:unit
+```
 
 ---
 
