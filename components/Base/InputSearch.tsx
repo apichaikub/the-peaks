@@ -41,6 +41,7 @@ const Wrapper = styled.div.attrs((props : TWrapperProps) => ({
 }))`
   display: flex;
   justify-content: flex-end;
+  min-width: 300px;
   max-width: 300px;
   height: 44px;
   overflow: hidden;
