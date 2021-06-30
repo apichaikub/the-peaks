@@ -12,10 +12,10 @@
     "build-storybook": "build-storybook",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:unit": "jest test/unit/**/*",
-    "test:unit:watch": "jest test/unit/**/* --watch",
-    "test:ui": "jest test/ui/**/*",
-    "test:ui:watch": "jest test/ui/**/* --watch"
+    "test:unit": "jest test/unit/*",
+    "test:unit:watch": "jest test/unit/* --watch",
+    "test:ui": "jest test/ui/*",
+    "test:ui:watch": "jest test/ui/* --watch"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.10",

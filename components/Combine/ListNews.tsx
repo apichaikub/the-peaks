@@ -57,9 +57,9 @@ type Props = {
 
 const ListNews = ({ items = [] } : Props) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="t-news-items">
       { items.map((item, index) => (
-        <Item key={index}>
+        <Item key={index} data-testid="t-news-item">
           <CardNews
             id={item.id}
             cover={item.cover}

@@ -5,7 +5,7 @@ import H2 from "../Base/H2"
 import { NewsItem } from "../../constants/news"
 import NotFoundData from "../Base/NotFoundData"
 
-type Props = {
+export type Props = {
   title: String;
   items: NewsItem[];
 }
@@ -14,14 +14,14 @@ const News = ({ title, items = [] } : Props) => {
   return (
     <>
       <Sidebar padding="20px 0 30px 0">
-        <H2>{ title }</H2>
+        <H2 data-testid="t-title">{ title }</H2>
       </Sidebar>
       <Container>
         { items.length
         ? <ListNews
             items={items}
           />
-        : <NotFoundData>Not found data 😵</NotFoundData> }
+        : <NotFoundData data-testid="t-not-found-data">Not found data 😵</NotFoundData> }
       </Container>
     </>
   )
