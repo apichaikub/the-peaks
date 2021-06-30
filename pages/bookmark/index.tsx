@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import Layout from '../../components/Assemble/Layout'
 import Bookmark from '../../components/Assemble/Bookmark'
-import useBookmark from '../../hook/useBookmark'
+import useBookmark from '../../hooks/useBookmark'
 import NotFoundData from '../../components/Base/NotFoundData'
 import { useEffect, useState } from 'react'
 import { NewsItem } from '../../constants/news'
 import { getDetail } from '../../services/guardian/news.api'
 import { transformItems } from '../../services/guardian/_transform'
 import { AxiosResponse } from 'axios'
-import useSearch from '../../hook/useSearch'
+import useSearch from '../../hooks/useSearch'
 
 const Index = () => {
   const { bookmarks, bookmarkIds } = useBookmark()

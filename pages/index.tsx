@@ -6,7 +6,7 @@ import Layout from '../components/Assemble/Layout'
 import { getSearch } from '../services/guardian/news.api'
 import { FILTER, NewsItem } from '../constants/news'
 import { transformItems } from '../services/guardian/_transform'
-import useSearch from '../hook/useSearch'
+import useSearch from '../hooks/useSearch'
 
 export default function Index() {
   const [loading, setLoading] = useState<Boolean>(false)

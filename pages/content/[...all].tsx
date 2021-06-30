@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import Layout from '../../components/Assemble/Layout'
 import Content from '../../components/Assemble/Content'
-import useSearch from '../../hook/useSearch'
+import useSearch from '../../hooks/useSearch'
 import { NewsContent } from '../../constants/news'
 import { getDetail } from '../../services/guardian/news.api'
 import { transformContent } from '../../services/guardian/_transform'
 import { getId } from '../../helpers/utils'
-import useBookmark from '../../hook/useBookmark'
+import useBookmark from '../../hooks/useBookmark'
 import { useState } from 'react'
 import Toast from '../../components/Base/Toast'
-import useToastBookmark from '../../hook/useToastBookmark'
+import useToastBookmark from '../../hooks/useToastBookmark'
 
 type Props = {
   content: NewsContent
