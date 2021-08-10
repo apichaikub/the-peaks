@@ -9,7 +9,7 @@ const Index = () => {
       </Head>
       <Layout>
         <div style={{ display: 'flex', justifyContent: 'center', margin: '70px 0' }}>
-          <h1>You are in offline mode :)</h1>
+          <h1>You are in offline mode</h1>
         </div>
       </Layout>
     </>
