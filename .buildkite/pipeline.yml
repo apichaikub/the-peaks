@@ -2,7 +2,7 @@ env:
   APP_NAME: "the-peak"
 
 steps:
-  - label: 'Run testt'
+  - label: 'Run testtt'
     branches: "master"
     timeout_in_minutes: 30
     plugins:
