@@ -3,6 +3,7 @@ env:
 
 steps:
   - label: 'Run test'
+    branches: "master"
     timeout_in_minutes: 30
     plugins:
       - docker-compose#v3.7.0:
