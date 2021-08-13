@@ -2,6 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig()
 
+console.log('_api publicRuntimeConfig', publicRuntimeConfig.API)
 const instance : AxiosInstance = axios.create({
   baseURL: publicRuntimeConfig.API,
   timeout: 1000 * 10,
