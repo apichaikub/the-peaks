@@ -1,7 +1,9 @@
 import axios, { AxiosInstance } from "axios";
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
 
 const instance : AxiosInstance = axios.create({
-  baseURL: 'https://content.guardianapis.com/',
+  baseURL: publicRuntimeConfig.API,
   timeout: 1000 * 10,
 })
 

@@ -12,6 +12,9 @@ const moduleExports = {
     swSrc: 'service-worker.js',
     disable: process.env.NODE_ENV === 'development',
   },
+  publicRuntimeConfig: {
+    API: process.env.API,
+  },
 }
 
 const SentryWebpackPluginOptions = {
