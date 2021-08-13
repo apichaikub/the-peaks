@@ -60,12 +60,12 @@ const Index = () => {
         /> :
         <NotFoundData>
           Not found data 😵
-          <button onClick={(e) => console.log(x)}>Click to error</button>\
+          {/* <button onClick={(e) => console.log(x)}>Click to error</button>\
           <button type="button" onClick={() => {
               throw new Error("Sentry Frontend Error");
           }}>
               Throw error
-          </button>
+          </button> */}
         </NotFoundData>
         }
       </Layout>
