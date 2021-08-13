@@ -1,0 +1,11 @@
+env:
+  APP_NAME: "the-peak"
+
+steps:
+  - label: 'Run test'
+    timeout_in_minutes: 30
+    plugins:
+      - docker-compose#v3.7.0:
+          run: ${APP_NAME}
+          config: .buildkite/docker-compose.yml
+          command: ['yarn', 'test']
