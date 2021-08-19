@@ -17,7 +17,7 @@ export default function Index() {
 
   const fetchTopStories = () => {
     return getSearch({
-      'page': 1,
+      'page': 1, 
       'page-size': 8,
       'show-elements': 'all',
       'show-fields': 'thumbnail,trailText,headline',
